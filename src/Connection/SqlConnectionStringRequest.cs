@@ -20,7 +20,7 @@ public class PolySqlException : Exception
     }
 }
 
-public static class SqlConnection
+public static class SqlConnections
 {
     public static SqlConnectionStringResponse Fail(string message) => new SqlConnectionStringResponse(null, message);
     public static SqlConnectionStringResponse Pass(string connString) => new SqlConnectionStringResponse(connString, null);
