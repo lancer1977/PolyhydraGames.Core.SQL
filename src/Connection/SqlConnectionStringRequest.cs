@@ -11,11 +11,14 @@ namespace PolyhydraGames.Data.Sql.Connection;
 public sealed record SqlConnectionStringRequest(string ConnectionStringKey)
 {
     /// <summary>
-    /// 
+    /// shows up as /run/secrets/{PasswordFileKey} in docker secrets by default. Were going to read the file and set the password from it if exists
     /// </summary>
     public string PasswordFileKey => ConnectionStringKey + SqlKeyNames.SqlPasswordFile;
-    
-    string PasswordKey = ConnectionStringKey + SqlKeyNames.SqlPasswordEnv;
+
+    /// <summary>
+    ///
+    /// 
+    public string PasswordKey = ConnectionStringKey + SqlKeyNames.SqlPasswordEnv;
 }
 
 public sealed record SqlConnectionStringResponse(string? ConnectionString, string? ErrorMessage);
