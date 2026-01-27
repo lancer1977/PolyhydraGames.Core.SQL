@@ -1,3 +1,4 @@
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using PolyhydraGames.Data.Sql.Connection;
 
@@ -36,12 +37,12 @@ public static class ConfigurationExtensions
     { 
 
         var baseConn = config.GetConnectionString(request.ConnectionStringKey);
-        if (string.IsNullOrWhiteSpace(baseConn)) return SqlConnection.Fail($"Missing ConnectionStrings:{request.ConnectionStringKey}");
+        if (string.IsNullOrWhiteSpace(baseConn)) return SqlConnections.Fail($"Missing ConnectionStrings:{request.ConnectionStringKey}");
 
         var passwordFile = config[request.PasswordFileKey];
         var password = SecretFile.ReadAllTextTrimmed(passwordFile);
         var result = baseConn.WithPassword(password);
-        return SqlConnection.Pass(result);
+        return SqlConnections.Pass(result);
     }
 
     public static SqlConnectionStringResponse GetSqlConnectionString(this IConfiguration config, string connectionStringKey)
