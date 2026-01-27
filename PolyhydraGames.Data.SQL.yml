@@ -2,7 +2,7 @@
 name: 1.0.0.$(rev:r)
 variables: 
 - name: Project.Path
-  value: '**/PolyhydraGames.Data.SQL.csproj'
+  value: '**/PolyhydraGames.Data.Sql.csproj'
 - name: BuildConfiguration
   value: Release
 trigger:
@@ -23,7 +23,7 @@ jobs:
   - task: DotNetCoreCLI@2
     inputs:
       command: 'pack'
-      packagesToPack: '$(Project.Path)' 
+      searchPatternPack: '$(Project.Path)' 
       versioningScheme: 'byBuildNumber'
       arguments: '-c $(BuildConfiguration)' 
   - task: NuGetCommand@2
