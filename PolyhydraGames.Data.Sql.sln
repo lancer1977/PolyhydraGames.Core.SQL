@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11205.157 d18.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolyhydraGames.Data.Sql", "src\PolyhydraGames.Data.Sql.csproj", "{478C3C8A-03E5-8C9A-A987-BB06D3536BD2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{478C3C8A-03E5-8C9A-A987-BB06D3536BD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{478C3C8A-03E5-8C9A-A987-BB06D3536BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{478C3C8A-03E5-8C9A-A987-BB06D3536BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{478C3C8A-03E5-8C9A-A987-BB06D3536BD2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B50CE491-F9CF-42ED-B010-D7D985CD5C6B}
+	EndGlobalSection
+EndGlobal
