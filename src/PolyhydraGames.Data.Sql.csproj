@@ -15,16 +15,12 @@
 		<RepositoryUrl>
 		</RepositoryUrl>
 		<PackageLicenseExpression>Unlicense</PackageLicenseExpression>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
+ 
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
  
 	</PropertyGroup>
-
-	<ItemGroup>
-		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
-	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
