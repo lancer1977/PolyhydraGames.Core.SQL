@@ -11,7 +11,7 @@ trigger:
     - refs/heads/main 
   paths:
     include:
-    - Rest
+    - src
 jobs:
 - job: Phase_1 
   cancelTimeoutInMinutes: 1
