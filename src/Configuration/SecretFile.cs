@@ -17,3 +17,9 @@ public static class SecretFile
         return File.ReadAllText(path).Trim();
     }
 }
+
+public static class SqlKeyNames
+{
+    public const string SqlPasswordFile = "SqlPasswordFile";
+    public const string SqlPasswordEnv = "SqlPassword";
+}

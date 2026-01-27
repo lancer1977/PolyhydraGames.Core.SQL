@@ -34,22 +34,29 @@ public static class ConfigurationExtensions
     /// and returns a SqlClient-valid connection string with Password=... injected.
     /// </summary>
     public static SqlConnectionStringResponse GetSqlConnectionString(this IConfiguration config, SqlConnectionStringRequest request)
-    { 
+    {
 
         var baseConn = config.GetConnectionString(request.ConnectionStringKey);
         if (string.IsNullOrWhiteSpace(baseConn)) return SqlConnections.Fail($"Missing ConnectionStrings:{request.ConnectionStringKey}");
 
         var passwordFile = config[request.PasswordFileKey];
-        var password = SecretFile.ReadAllTextTrimmed(passwordFile);
+        var password =  string.IsNullOrWhiteSpace(passwordFile) 
+            ? config[request.PasswordKey] 
+            : SecretFile.ReadAllTextTrimmed(passwordFile);
+
+        if (string.IsNullOrWhiteSpace(password))
+        {
+            return SqlConnections.Fail("No passwords found for " + request.ConnectionStringKey);
+        }
         var result = baseConn.WithPassword(password);
         return SqlConnections.Pass(result);
     }
 
     public static SqlConnectionStringResponse GetSqlConnectionString(this IConfiguration config, string connectionStringKey)
     {
-        
 
-        var request = new SqlConnectionStringRequest(connectionStringKey, "SqlPasswordFile");
+
+        var request = new SqlConnectionStringRequest(connectionStringKey);
         return config.GetSqlConnectionString(request);
     }
 

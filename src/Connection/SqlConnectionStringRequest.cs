@@ -1,4 +1,6 @@
 
+using PolyhydraGames.Data.Sql.Configuration;
+
 namespace PolyhydraGames.Data.Sql.Connection;
 
 /// <summary>
@@ -6,18 +8,22 @@ namespace PolyhydraGames.Data.Sql.Connection;
 /// </summary>
 /// <param name="ConnectionStringKey">The key passed to IConfiguration.GetSqlConnectionString(...).</param>
 /// <param name="PasswordFileKey">A configuration key that points to the password file location.</param>
-public sealed record SqlConnectionStringRequest(string ConnectionStringKey, string PasswordFileKey);
+public sealed record SqlConnectionStringRequest(string ConnectionStringKey)
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public string PasswordFileKey => ConnectionStringKey + SqlKeyNames.SqlPasswordFile;
+    
+    string PasswordKey = ConnectionStringKey + SqlKeyNames.SqlPasswordEnv;
+}
 
 public sealed record SqlConnectionStringResponse(string? ConnectionString, string? ErrorMessage);
 
 public class PolySqlException : Exception
 {
-    public PolySqlException(string message) : base(message)
-    {
-    }
-    public PolySqlException(string message, Exception innerException) : base(message, innerException)
-    {
-    }
+    public PolySqlException(string message) : base(message) { }
+    public PolySqlException(string message, Exception innerException) : base(message, innerException) { }
 }
 
 public static class SqlConnections
