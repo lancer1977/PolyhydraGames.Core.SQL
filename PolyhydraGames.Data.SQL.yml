@@ -23,7 +23,7 @@ jobs:
   - task: DotNetCoreCLI@2
     inputs:
       command: 'pack'
-      packagesToPack: '$(Project.Path)' 
+      searchPatternPack: '$(Project.Path)' 
       versioningScheme: 'byBuildNumber'
       arguments: '-c $(BuildConfiguration)' 
   - task: NuGetCommand@2
