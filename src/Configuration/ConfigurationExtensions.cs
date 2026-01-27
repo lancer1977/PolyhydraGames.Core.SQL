@@ -18,7 +18,7 @@ public static class ConfigurationExtensions
         if (config is null) throw new ArgumentNullException(nameof(config));
         if (request is null) throw new ArgumentNullException(nameof(request));
 
-        var baseConn = config.GetConnectionString(request.ConnectionStringKey);
+        var baseConn = config.GetSqlConnectionString(request.ConnectionStringKey);
         if (string.IsNullOrWhiteSpace(baseConn))
             throw new InvalidOperationException($"Missing ConnectionStrings:{request.ConnectionStringKey}");
 
@@ -26,5 +26,13 @@ public static class ConfigurationExtensions
         var password = SecretFile.ReadAllTextTrimmed(passwordFile);
 
         return baseConn.WithPassword(password);
+    }
+
+    public static string GetSqlConnectionString(this IConfiguration config, string connectionStringKey)
+    {
+        if (config is null) throw new ArgumentNullException(nameof(config));
+
+        var request = new SqlConnectionStringRequest(connectionStringKey, "SqlPasswordFile");
+        return config.GetSqlConnectionString(request);
     }
 }
