@@ -21,7 +21,7 @@ public static class SqlCommandExtensions
         => cmd.Add(name, value ?? (object)DBNull.Value);
 
     public static SqlParameter AddNullableStruct<T>(this SqlCommand cmd, string name, T? value) where T : struct
-        => cmd.Add(name, value?.ToString() ?? (object)DBNull.Value);
+        => cmd.Add(name, (object?)value ?? DBNull.Value);
 
     public static SqlParameter AddUtc(this SqlCommand cmd, string name, DateTime utc)
     {
