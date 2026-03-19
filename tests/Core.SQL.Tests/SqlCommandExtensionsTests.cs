@@ -105,7 +105,7 @@ public class SqlCommandExtensionsTests
     }
 
     [Fact]
-    public void AddNullableStruct_WithValue_ShouldAddParameter()
+    public void AddNullableStruct_WithValue_ShouldPreserveNativeType()
     {
         // Arrange
         using var cmd = CreateCommand();
@@ -115,7 +115,40 @@ public class SqlCommandExtensionsTests
 
         // Assert
         Assert.NotNull(param);
-        Assert.Equal("42", param.Value);
+        Assert.IsType<int>(param.Value);  // Should be int, not string
+        Assert.Equal(42, param.Value);
+    }
+
+    [Fact]
+    public void AddNullableStruct_WithGuidValue_ShouldPreserveGuidType()
+    {
+        // Arrange
+        using var cmd = CreateCommand();
+        var guid = Guid.Parse("12345678-1234-1234-1234-123456789abc");
+
+        // Act
+        var param = cmd.AddNullableStruct<Guid>("@GuidParam", guid);
+
+        // Assert
+        Assert.NotNull(param);
+        Assert.IsType<Guid>(param.Value);  // Should be Guid, not string
+        Assert.Equal(guid, param.Value);
+    }
+
+    [Fact]
+    public void AddNullableStruct_WithDateTimeValue_ShouldPreserveDateTimeType()
+    {
+        // Arrange
+        using var cmd = CreateCommand();
+        var dt = new DateTime(2024, 6, 15, 12, 30, 0);
+
+        // Act
+        var param = cmd.AddNullableStruct<DateTime>("@DateParam", dt);
+
+        // Assert
+        Assert.NotNull(param);
+        Assert.IsType<DateTime>(param.Value);  // Should be DateTime, not string
+        Assert.Equal(dt, param.Value);
     }
 
     [Fact]
