@@ -22,6 +22,23 @@ jobs:
 
   - task: DotNetCoreCLI@2
     inputs:
+      command: 'restore'
+      projects: '$(Project.Path)'
+  
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'build'
+      projects: '$(Project.Path)'
+      arguments: '-c $(BuildConfiguration)'
+
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'test'
+      projects: '**/Core.SQL.Tests.csproj'
+      arguments: '-c $(BuildConfiguration) --no-build'
+
+  - task: DotNetCoreCLI@2
+    inputs:
       command: 'pack'
       searchPatternPack: '$(Project.Path)' 
       versioningScheme: 'byBuildNumber'
