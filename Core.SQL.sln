@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolyhydraGames.Data.Sql", "src\PolyhydraGames.Data.Sql.csproj", "{6D723898-627E-E8F0-679E-F168A1AC67F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.SQL.Smoke", "samples\Core.SQL.Smoke\Core.SQL.Smoke.csproj", "{D63874A9-0D33-4E29-B968-ADD220AC578C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{6D723898-627E-E8F0-679E-F168A1AC67F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D723898-627E-E8F0-679E-F168A1AC67F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D723898-627E-E8F0-679E-F168A1AC67F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D63874A9-0D33-4E29-B968-ADD220AC578C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D63874A9-0D33-4E29-B968-ADD220AC578C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D63874A9-0D33-4E29-B968-ADD220AC578C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D63874A9-0D33-4E29-B968-ADD220AC578C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

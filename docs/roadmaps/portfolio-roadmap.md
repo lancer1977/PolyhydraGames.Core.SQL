@@ -22,9 +22,9 @@
 
 ## V1 (stability)
 - [ ] Add release checklist binding docs changes to test matrix for connection factories and command helpers.
-- [ ] Add deterministic smoke for pipeline + package restore + sample execution.
+- [x] Add deterministic smoke for pipeline + package restore + sample execution.
 - [ ] Add backward compatibility notes for API signatures and execution options.
-- [ ] Document operational runbook for SQL config resolution failures.
+- [x] Document operational runbook for SQL config resolution failures.
 
 ## V2 (confidence)
 - [ ] Expand tests for failure modes, invalid options, and async execution boundaries.

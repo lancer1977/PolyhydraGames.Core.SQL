@@ -17,7 +17,7 @@ This directory documents all features and roadmap items. All state is now tracke
 
 - [Visual Studio Solution](./visual-studio-solution.md)
 
-
 ## Beyond the App
 
 - Shared utilities and local development tools.
+- Deterministic smoke and release-checklist docs live under `docs/smoke/` and `docs/runbooks/`.

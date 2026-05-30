@@ -1,51 +1,29 @@
 # Core.SQL
 
-[![Build Status](https://img.shields.io/github/actions/workflow/user/lancer1977/PolyhydraGames.Core.SQL/.github/workflows/ci.yml/badge.svg)](https://github.com/lancer1977/PolyhydraGames.Core.SQL/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+Core.SQL is a small SQL Server helper library for connection-string resolution, lightweight execution helpers, and health checks.
 
-## 🚀 Overview
-This library provides core SQL-related functionalities and abstractions, likely intended for use within the Polyhydra Games ecosystem. It abstracts database interactions, potentially simplifying data access patterns.
+## Repository layout
+- `src/PolyhydraGames.Data.Sql.csproj` — library project
+- `tests/Core.SQL.Tests/Core.SQL.Tests.csproj` — focused xUnit coverage
+- `samples/Core.SQL.Smoke/Core.SQL.Smoke.csproj` — deterministic smoke console app
+- `scripts/sql-smoke.sh` — one-command restore/build/test/pack/sample smoke
 
-## ✨ Key Features
-*   **SQL Abstraction**: Provides a layer over direct SQL interactions.
-*   **Data Access Patterns**: Likely implements patterns for efficient and maintainable database operations.
-
-## 🏗️ Architecture
-This library appears to be an infrastructure-level component, potentially providing repository or data access abstractions.
-
-### 🛠️ Technology Stack
-*   **Language**: C#
-*   **Framework**: .NET (version TBD, no `.csproj` found)
-*   **Database**: SQL-related abstractions.
-
-## 🚦 Getting Started
-
-### Prerequisites
-*   .NET SDK (version TBD)
-
-### Installation
-As this is a core library, it's likely consumed as a dependency by other projects.
+## Quick start
 ```bash
-# Example NuGet consumption (package name TBD, as .csproj not found)
-# dotnet add package PolyhydraGames.Core.SQL
+dotnet restore Core.SQL.sln
+dotnet build Core.SQL.sln -c Release --no-restore
+dotnet test tests/Core.SQL.Tests/Core.SQL.Tests.csproj -c Release --no-build
+./scripts/sql-smoke.sh
 ```
 
-## 📖 Usage & Education
-Usage would involve implementing data access logic using the provided abstractions. Specific examples depend on the library's exact interfaces.
+## Package
+The library is packable as `PolyhydraGames.Data.SqlClient` from `src/PolyhydraGames.Data.Sql.csproj`.
 
-## 🌐 Deployment & Hosting
-*   **Repo**: [PolyhydraGames.Core.SQL](https://github.com/lancer1977/PolyhydraGames.Core.SQL)
-*   **Hosting Platform**: GitHub.
+## Configuration failure runbook
+If config resolution fails, start with `docs/runbooks/sql-config-resolution-failures.md`.
 
-## 📦 Packages & Dependencies
-*   **NuGet**: Package name and details TBD, as `.csproj` files were not found.
-
-## 🔗 Related Projects
-*   Other `Core.*` libraries within the Polyhydra Games ecosystem.
-
-## 📚 Documentation & Resources
-*   **Features**: [Docs/Features](./docs/features/README.md)
-*   **CI/CD**: [GitHub Actions](https://github.com/lancer1977/PolyhydraGames.Core.SQL/actions)
-
----
-*This README was generated based on project metadata and description.*
+## Docs
+- Roadmap: `docs/roadmap/v1/README.md`
+- Portfolio roadmap: `docs/roadmaps/portfolio-roadmap.md`
+- Feature index: `docs/features/README.md`
+- Smoke notes: `docs/smoke/deterministic-sql-smoke.md`
