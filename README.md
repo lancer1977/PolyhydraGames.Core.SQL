@@ -2,6 +2,23 @@
 
 Core.SQL is a small SQL Server helper library for connection-string resolution, lightweight execution helpers, and health checks.
 
+## Tags
+
+- core
+- core-sql
+- dotnet
+- sql
+- database
+- docs
+
+## Related Repos
+
+- [`Core`](../Core/)
+- [`Core.Models`](../Core.Models/)
+- [`Core.Interfaces`](../Core.Interfaces/)
+- [`Core.Extensions`](../Core.Extensions/)
+- [`Core.Serialization`](../Core.Serialization/)
+
 ## Repository layout
 - `src/PolyhydraGames.Data.Sql.csproj` — library project
 - `tests/Core.SQL.Tests/Core.SQL.Tests.csproj` — focused xUnit coverage
