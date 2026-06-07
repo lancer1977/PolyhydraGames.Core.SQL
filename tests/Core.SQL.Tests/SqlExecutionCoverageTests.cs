@@ -3,6 +3,7 @@ using PolyhydraGames.Data.Sql.Connection;
 using PolyhydraGames.Data.Sql.Execution;
 using PolyhydraGames.Data.Sql.Readers;
 using PolyhydraGames.Data.Sql.Schema;
+using System.Data;
 using Xunit;
 
 namespace Core.SQL.Tests;
@@ -96,6 +97,26 @@ public class SqlExecutionCoverageTests
             SqlSchemaInspector.TableExistsAsync(null!, "dbo", "Users"));
 
         Assert.Equal("conn", ex.ParamName);
+    }
+
+    [Fact]
+    public void SqlSchemaInspector_ConfigureTableExistsParameters_UsesExplicitNVarCharMetadata()
+    {
+        using var cmd = new SqlCommand();
+
+        SqlSchemaInspector.ConfigureTableExistsParameters(cmd, "dbo", "Users");
+
+        Assert.Equal(2, cmd.Parameters.Count);
+
+        var schema = Assert.Single(cmd.Parameters.Cast<SqlParameter>(), p => p.ParameterName == "@schema");
+        Assert.Equal(SqlDbType.NVarChar, schema.SqlDbType);
+        Assert.Equal(128, schema.Size);
+        Assert.Equal("dbo", schema.Value);
+
+        var table = Assert.Single(cmd.Parameters.Cast<SqlParameter>(), p => p.ParameterName == "@table");
+        Assert.Equal(SqlDbType.NVarChar, table.SqlDbType);
+        Assert.Equal(128, table.Size);
+        Assert.Equal("Users", table.Value);
     }
 
     [Fact]

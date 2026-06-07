@@ -21,7 +21,7 @@
 - Runtime/environment assumptions for package usage could be clearer.
 
 ## V1 (stability)
-- [ ] Add release checklist binding docs changes to test matrix for connection factories and command helpers.
+- [x] Add release checklist binding docs changes to test matrix for connection factories and command helpers. See [SQL release checklist](../runbooks/sql-release-checklist.md).
 - [x] Add deterministic smoke for pipeline + package restore + sample execution.
 - [ ] Add backward compatibility notes for API signatures and execution options.
 - [x] Document operational runbook for SQL config resolution failures.
