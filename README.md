@@ -33,6 +33,20 @@ dotnet test tests/Core.SQL.Tests/Core.SQL.Tests.csproj -c Release --no-build
 ./scripts/sql-smoke.sh
 ```
 
+## Validation and artifacts
+
+`./scripts/sql-smoke.sh` is the native validation path. It restores, builds, runs the xUnit tests, packs `PolyhydraGames.Data.SqlClient`, and runs the deterministic smoke sample.
+
+GitHub Actions runs the same smoke script. Every run uploads the package outputs as the `core-sql-nuget` workflow artifact from `artifacts/sql-smoke/packages`. Tags matching `v*` also publish the `.nupkg` to GitHub Packages using the built-in `GITHUB_TOKEN`; no extra repository secret is required.
+
+Dependency audit:
+
+```bash
+dotnet list Core.SQL.sln package --outdated
+```
+
+The current drift is `Microsoft.Data.SqlClient` 7.0.1 -> 7.0.2 and is tracked for the next package-maintenance slice.
+
 ## Package
 The library is packable as `PolyhydraGames.Data.SqlClient` from `src/PolyhydraGames.Data.Sql.csproj`.
 
